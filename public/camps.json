@@ -1,0 +1,68 @@
+[
+  {
+    "campName": "Wellness for All",
+    "image": "[Link to Image]",
+    "campFees": "Free",
+    "scheduledDateTime": "June 15, 2023, 9:00 AM - 4:00 PM",
+    "venueLocation": "City Park Community Center",
+    "specializedServices": "General health check-ups, Immunizations, Nutrition counseling",
+    "healthcareProfessionals": "General practitioners, Nutritionists, Vaccination experts",
+    "targetAudience": "All age groups",
+    "description": "A community-focused health camp offering comprehensive services to enhance well-being. Join us for a day of health and wellness for everyone."
+  },
+  {
+    "campName": "Heart Health Expo",
+    "image": "[Link to Image]",
+    "campFees": "$20 (Includes heart health kit)",
+    "scheduledDateTime": "August 5, 2023, 10:00 AM - 3:00 PM",
+    "venueLocation": "Riverside Convention Center",
+    "specializedServices": "Cardiovascular screenings, Heart disease prevention workshops",
+    "healthcareProfessionals": "Cardiologists, Nurses, Fitness trainers",
+    "targetAudience": "Adults aged 40 and above",
+    "description": "Dedicated to heart health, this expo provides screenings, expert advice, and tools for maintaining a healthy heart. Invest in your cardiovascular well-being!"
+  },
+  {
+    "campName": "Kids Wellness Carnival",
+    "image": "[Link to Image]",
+    "campFees": "Free for children under 12",
+    "scheduledDateTime": "July 8, 2023, 11:00 AM - 2:00 PM",
+    "venueLocation": "Sunshine Park",
+    "specializedServices": "Pediatric check-ups, Dental screenings, Child safety workshops",
+    "healthcareProfessionals": "Pediatricians, Dentists, Child psychologists",
+    "targetAudience": "Children and parents",
+    "description": "An exciting carnival focused on kids' health! Receive pediatric check-ups, dental screenings, and valuable information on child safety."
+  },
+  {
+    "campName": "Diabetes Care Expo",
+    "image": "[Link to Image]",
+    "campFees": "$15 (Includes diabetes screening)",
+    "scheduledDateTime": "September 20, 2023, 8:30 AM - 3:30 PM",
+    "venueLocation": "Community Health Center",
+    "specializedServices": "Diabetes screenings, Nutrition guidance, Insulin management",
+    "healthcareProfessionals": "Endocrinologists, Dietitians, Diabetes educators",
+    "targetAudience": "Individuals with diabetes or at risk",
+    "description": "Join us in the fight against diabetes! The expo offers screenings, expert advice, and resources for effective diabetes management and prevention."
+  },
+  {
+    "campName": "Women's Health Empowerment",
+    "image": "[Link to Image]",
+    "campFees": "Free",
+    "scheduledDateTime": "October 12, 2023, 9:30 AM - 4:00 PM",
+    "venueLocation": "Women's Wellness Center",
+    "specializedServices": "Women's health screenings, Gynecological consultations, Mental health sessions",
+    "healthcareProfessionals": "Gynecologists, Psychologists, Nutritionists",
+    "targetAudience": "Women of all ages",
+    "description": "Celebrate women's health! This camp offers screenings, consultations, and empowering sessions to enhance the well-being of women at every stage of life."
+  },
+  {
+    "campName": "Senior Health Symposium",
+    "image": "[Link to Image]",
+    "campFees": "$10 (Includes senior health resource kit)",
+    "scheduledDateTime": "November 18, 2023, 10:00 AM - 2:00 PM",
+    "venueLocation": "Senior Community Center",
+    "specializedServices": "Geriatric health assessments, Fall prevention workshops, Medication reviews",
+    "healthcareProfessionals": "Geriatricians, Physical therapists, Pharmacists",
+    "targetAudience": "Seniors aged 65 and above",
+    "description": "Prioritize your golden years! This symposium focuses on senior health with assessments, workshops, and expert advice to enhance the quality of life for seniors."
+  }
+]
