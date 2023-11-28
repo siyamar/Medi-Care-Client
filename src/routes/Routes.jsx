@@ -6,6 +6,7 @@ import Home from "../pages/Home/Home/Home";
 import AvailableCamps from "../pages/AvailableCamps/AvailableCamps";
 import ContuctUs from "../pages/ContuctUs/ContuctUs";
 import Error from "../pages/Error/Error";
+import CampDetails from "../components/CampDetails/CampDetails";
 
 const router = createBrowserRouter([
     {
@@ -24,6 +25,11 @@ const router = createBrowserRouter([
         {
             path: 'contactUs',
             element: <ContuctUs></ContuctUs>
+        },
+        {
+          path: "/camp-details/:id",
+          element: <CampDetails></CampDetails>,
+          loader: ({ params }) => fetch(`http://localhost:5000/medicalCamps/${params.id}`),
         },
       ]
     },
