@@ -75,7 +75,7 @@ const CampDetails = () => {
           <p className="text-xl">Camp Fee: ${campFees}</p>
           <p>
             <span className="font-bold">Already Participant: </span>
-            {}
+            {participat}
           </p>
           <p>
             <span className="font-bold">Date: </span> {scheduledDateTime}

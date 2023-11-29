@@ -7,6 +7,8 @@ import AvailableCamps from "../pages/AvailableCamps/AvailableCamps";
 import ContuctUs from "../pages/ContuctUs/ContuctUs";
 import Error from "../pages/Error/Error";
 import CampDetails from "../components/CampDetails/CampDetails";
+import Login from "../pages/Login/Login";
+import Register from "../pages/Register/Register";
 
 const router = createBrowserRouter([
     {
@@ -27,7 +29,15 @@ const router = createBrowserRouter([
             element: <ContuctUs></ContuctUs>
         },
         {
-          path: "/camp-details/:id",
+            path: 'login',
+            element: <Login></Login>
+        },
+        {
+            path: 'register',
+            element: <Register></Register>
+        },
+        {
+          path: "camp-details/:id",
           element: <CampDetails></CampDetails>,
           loader: ({ params }) => fetch(`http://localhost:5000/medicalCamps/${params.id}`),
         },

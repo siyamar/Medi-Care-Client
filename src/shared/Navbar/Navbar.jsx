@@ -1,7 +1,17 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/image/logo7.jpg"
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
+  const { user, logOut } = useAuth();
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => {})
+      .then((error) => {
+        console.log(error);
+      });
+  };
     const navOptions = (
         <>
           <li>
@@ -31,7 +41,7 @@ const Navbar = () => {
             <Link to={"/contactUs"}>Contact Us</Link>
           </li>
           <li>
-            <Link to={"signUp"}>SignUp</Link>
+            <Link to={"register"}>Register</Link>
           </li>
           {/* <li>
             <Link to={"/dashboard/cart"}>
@@ -41,7 +51,7 @@ const Navbar = () => {
               </button>
             </Link>
           </li> */}
-          {/* {user ? (
+          {user ? (
             <>
               <button onClick={handleLogout} className="btn btn-ghost">
                 Logout
@@ -53,7 +63,7 @@ const Navbar = () => {
                 <Link to={"login"}>Login</Link>
               </li>
             </>
-          )} */}
+          )}
         </>
       );
     return (
