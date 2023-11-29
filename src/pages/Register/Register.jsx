@@ -1,13 +1,13 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import Navbar from "../shared/Navbar/Navbar";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import Swal from "sweetalert2";
-import { AuthContext } from "../../providers/AuthProvider";
+import useAuth from "../../hooks/useAuth";
 
 const Register = () => {
   const [registerError, setRegisterError] = useState("");
   const navigate = useNavigate();
-  const { createUser, googleSignIn } = useContext(AuthContext);
+  const { createUser, googleSignIn } = useAuth()
 
   const handleRegister = (event) => {
     event.preventDefault();

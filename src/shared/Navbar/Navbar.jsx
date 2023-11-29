@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/image/logo7.jpg"
 import useAuth from "../../hooks/useAuth";
+import { Avatar } from "flowbite-react";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -20,9 +21,9 @@ const Navbar = () => {
           <li>
             <Link to={"/availableCamps"}>Available Camps</Link>
           </li>
-          <li>
+          {/* <li>
             <Link to={"/dashboard"}>Dashboard</Link>
-          </li>
+          </li> */}
           {
             // user ? 'true' : 'false'
             // user? condition? 'double true' : 'one true' : 'false'
@@ -32,17 +33,18 @@ const Navbar = () => {
             <li>
             <Link to={"/dashboard/adminHome"}>Dashboard</Link>
           </li>}
+          */}
           {
-            user && !isAdmin &&
+            user && 
             <li>
             <Link to={"/dashboard/userHome"}>Dashboard</Link>
-          </li>} */}
+          </li>} 
           <li>
             <Link to={"/contactUs"}>Contact Us</Link>
           </li>
-          <li>
+          {!user&& <li>
             <Link to={"register"}>Register</Link>
-          </li>
+          </li>}
           {/* <li>
             <Link to={"/dashboard/cart"}>
               <button className="btn">
@@ -51,7 +53,7 @@ const Navbar = () => {
               </button>
             </Link>
           </li> */}
-          {user ? (
+          {/* {user ? (
             <>
               <button onClick={handleLogout} className="btn btn-ghost">
                 Logout
@@ -63,7 +65,7 @@ const Navbar = () => {
                 <Link to={"login"}>Login</Link>
               </li>
             </>
-          )}
+          )} */}
         </>
       );
     return (
@@ -100,8 +102,21 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navOptions}</ul>
         </div>
+  
         <div className="navbar-end">
-          <a className="btn">Logout</a>
+          {
+            user ? 
+            <>
+          <div>
+          <Avatar img={user?.photoURL} className="mr-2" status="online" rounded size={'md'} alt="Profile" />
+          </div>
+            <button onClick={handleLogout} className="btn">Logout</button>
+            </>
+            :
+            <Link to={"login"}>
+              <button className="btn">Login</button>
+              </Link>
+          }
         </div>
       </div>
         </div>
