@@ -22,7 +22,8 @@ const router = createBrowserRouter([
         },
         {
             path: 'availableCamps',
-            element: <AvailableCamps></AvailableCamps>
+            element: <AvailableCamps></AvailableCamps>,
+            loader: ()=> fetch('http://localhost:5000/medicalCamps')
         },
         {
             path: 'contactUs',

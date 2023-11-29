@@ -18,9 +18,7 @@ const Navbar = () => {
           <li>
             <Link to={"/"}>Home</Link>
           </li>
-          <li>
-            <Link to={"/availableCamps"}>Available Camps</Link>
-          </li>
+          
           {/* <li>
             <Link to={"/dashboard"}>Dashboard</Link>
           </li> */}
@@ -35,10 +33,15 @@ const Navbar = () => {
           </li>}
           */}
           {
-            user && 
+            user && <>
+            <li>
+            <Link to={"/availableCamps"}>Available Camps</Link>
+          </li>
             <li>
             <Link to={"/dashboard/userHome"}>Dashboard</Link>
-          </li>} 
+          </li>
+          </>
+          } 
           <li>
             <Link to={"/contactUs"}>Contact Us</Link>
           </li>
