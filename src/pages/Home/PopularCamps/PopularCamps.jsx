@@ -4,9 +4,11 @@ import useMedicalCamps from "../../../hooks/useMedicalCamps";
 
 const PopularCamps = () => {
   const [medicalCamps] = useMedicalCamps();
-  console.log(medicalCamps)
-  medicalCamps.sort((a, b) => b.description.length - a.description.length);
+
+  medicalCamps.sort((a, b) => b.participat - a.participat);
   const popularCamps = medicalCamps.slice(0, 6);
+
+  
   return (
     <div className="my-10">
       <SectionTitle heading={"Popular Medical Camps"}></SectionTitle>

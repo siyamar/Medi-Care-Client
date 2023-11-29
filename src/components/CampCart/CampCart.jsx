@@ -3,9 +3,12 @@ import { Link } from "react-router-dom";
 // import Swal from "sweetalert2";
 import { motion } from "framer-motion";
 import { fadeIn } from "../../components/Variants/variants";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const CampCart = ({ camp }) => {
-    const {_id, campName, image, campFees, scheduledDateTime, venueLocation, specializedServices, healthcareProfessionals, targetAudience, description}= camp;
+    const {_id, campName, image, campFees, scheduledDateTime, venueLocation, specializedServices, healthcareProfessionals, targetAudience, description, participat}= camp;
+
   return (
     <div>
       <Card
@@ -40,6 +43,9 @@ const CampCart = ({ camp }) => {
           </p>
           <p className="font-normal text-gray-700 dark:text-gray-400">
             <span className="font-bold">Target Audience:</span> {targetAudience}.
+          </p>
+          <p className="font-normal text-gray-700 dark:text-gray-400">
+            <span className="font-bold">Participat:</span> {participat}
           </p>
         </motion.div>
         <motion.div
