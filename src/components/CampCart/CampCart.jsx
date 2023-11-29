@@ -12,7 +12,7 @@ const CampCart = ({ camp }) => {
   return (
     <div>
       <Card
-        className="max-w-full h-[700px]"
+        className="max-w-full h-[750px]"
         imgAlt="Meaningful alt text for an image that is not purely decorative"
         imgSrc={image}
         
