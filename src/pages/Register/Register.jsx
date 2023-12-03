@@ -1,71 +1,91 @@
 import { Link, useNavigate } from "react-router-dom";
-// import Navbar from "../shared/Navbar/Navbar";
-import { useState } from "react";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
+import { Helmet } from "react-helmet-async";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { useForm } from "react-hook-form";
 
 const Register = () => {
-  const [registerError, setRegisterError] = useState("");
+  const axiosPublic = useAxiosPublic()
   const navigate = useNavigate();
-  const { createUser, googleSignIn } = useAuth()
+  const { createUser, googleSignIn, updateUserProfile } = useAuth()
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
-  const handleRegister = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const password = form.password.value;
-    const user = { name, email, password };
-    console.log(user);
 
-    //  reset error
-    setRegisterError("");
-
-    if (password.length < 6) {
-      setRegisterError("Password should be at least 6 characters or longer!!");
-      return;
-    } else if (!/[A-Z]/.test(password)) {
-      setRegisterError(
-        "Your Password should at least one upper case characters!"
-      );
-      return;
-    } else if (!/[!@#$%^&*()_+{}[\]:;<>,.?~\\-]/.test(password)) {
-      setRegisterError("Your Password should at least one special characters!");
-      return;
-    }
-
-    createUser(email, password)
-      .then((result) => {
-        console.log(result.user);
-        Swal.fire({
-          title: "Success!",
-          text: "Sign Up Successfully",
-          icon: "success",
-          confirmButtonText: "Ok",
-        });
-        navigate("/");
-      })
-      .catch((error) => {
-        console.error(error);
-        setRegisterError(error.message);
-        Swal.fire({
+  const onSubmit = (data) => {
+    console.log(data);
+    createUser(data.email, data.password).then((result) => {
+      const loggedUser = result.user;
+      console.log(loggedUser);
+      updateUserProfile(data.name)
+        .then(() => {
+          // create user entry in the database.
+          const userInfo = {
+            name: data.name,
+            email: data.email,
+          };
+          axiosPublic.post("/users", userInfo)
+          .then((res) => {
+            if (res.data.insertedId) {
+              reset();
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "User created Succesfully.",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              navigate("/");
+            }
+          });
+        })
+        .catch((error) => {  
+          console.log(error);
+          Swal.fire({
           title: "Error!",
-          text: { registerError },
+          text: "error",
           icon: "error",
           confirmButtonText: "X",
         });
-      });
+        });
+    });
   };
+
   const handleGoogleSignUp = () => {
     googleSignIn()
-    .then((result)=>{
+    .then(result=>{
       console.log(result.user)
-      navigate("/");
-    })
+      const userInfo ={
+          email: result.user?.email,
+          name: result.user?.displayName,
+          image: result.user?.photoURL
+      }
+      axiosPublic.post('/users', userInfo)
+      .then(res=>{
+          console.log(res.data)
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "User created Succesfully.",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate('/')
+      })
+  })
     .catch();
 
   };
   return (
+    <>
+    <Helmet>
+        <title>MediCare | Register</title>
+      </Helmet>
     <div className="max-w-6xl mx-auto">
       {/* <Navbar></Navbar> */}
       <div className="mt-32">
@@ -73,7 +93,7 @@ const Register = () => {
           Please Register
         </h2>
         <form
-          onSubmit={handleRegister}
+          onSubmit={handleSubmit(onSubmit)}
           className="p-4 md:w-3/4 lg:w-1/2 mx-auto"
         >
           <div className="form-control">
@@ -84,9 +104,13 @@ const Register = () => {
               type="text"
               name="name"
               placeholder="Name"
+               {...register("name", { required: true })}
               className="input input-bordered"
               required
             />
+            {errors.name && (
+                  <span className="text-red-600">Name is required</span>
+                )}
           </div>
           <div className="form-control">
             <label className="label">
@@ -96,9 +120,13 @@ const Register = () => {
               type="email"
               name="email"
               placeholder="email"
+              {...register("email", { required: true })}
               className="input input-bordered"
               required
             />
+            {errors.email && (
+                  <span className="text-red-600">Email is required</span>
+                )}
           </div>
           <div className="form-control">
             <label className="label">
@@ -108,14 +136,41 @@ const Register = () => {
               type="password"
               name="password"
               placeholder="password"
+              {...register("password", {
+                    required: true,
+                    minLength: 6,
+                    maxLength: 20,
+                    pattern: /(?=.*[A-Z])(?=.*[!@#$&+*])(?=.*[0-9])(?=.*[a-z])/,
+                  })}
               className="input input-bordered"
               required
             />
+             {errors.password?.type === "required" && (
+                  <span className="text-red-600">Password is required</span>
+                )}
+                {errors.password?.type === "minLenngth" && (
+                  <span className="text-red-600">
+                    Password must be 6 characters
+                  </span>
+                )}
+                {errors.password?.type === "maxLength" && (
+                  <span className="text-red-600">
+                    Password must be less then 20 characters
+                  </span>
+                )}
+                {errors.password?.type === "pattern" && (
+                  <span className="text-red-600">
+                    Password must have 1 uppercase, 1 lowercase, 1 number and 1
+                    special character
+                  </span>
+                )}
           </div>
           <div className="form-control mt-6">
-            <button className="btn bg-black text-white hover:bg-black">
-              Register
-            </button>
+                <input
+                  className="btn bg-black text-white hover:bg-black"
+                  type="submit"
+                  value="Register"
+                />
           </div>
         </form>
         <div className="flex justify-center items-center gap-6">
@@ -132,11 +187,9 @@ const Register = () => {
             </button>
           </p>
         </div>
-        {registerError && (
-          <p className="text-red-700 text-center mt-4">{registerError}</p>
-        )}
       </div>
     </div>
+    </>
   );
 };
 

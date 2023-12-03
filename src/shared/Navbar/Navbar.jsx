@@ -2,9 +2,11 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/image/logo7.jpg"
 import useAuth from "../../hooks/useAuth";
 import { Avatar } from "flowbite-react";
+import useAdmin from "../../hooks/useAdmin";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
+  const [isAdmin] = useAdmin();
 
   const handleLogout = () => {
     logOut()
@@ -37,9 +39,16 @@ const Navbar = () => {
             <li>
             <Link to={"/availableCamps"}>Available Camps</Link>
           </li>
-            <li>
-            <Link to={"/dashboard/userHome"}>Dashboard</Link>
-          </li>
+          {
+        user && isAdmin &&
+        <li>
+        <Link to={"/dashboard/adminHome"}>Dashboard</Link>
+      </li>}
+      {
+        user && !isAdmin &&
+        <li>
+        <Link to={"/dashboard/userHome"}>Dashboard</Link>
+      </li>}
           </>
           } 
           <li>

@@ -1,14 +1,16 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 // import Navbar from "../shared/Navbar/Navbar";
 import { useState } from "react";
-import axios from "axios";
 import useAuth from "../../hooks/useAuth";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { signIn, googleSignIn } = useAuth()
   const location = useLocation();
   const navigate = useNavigate();
   const [loginError, setLoginError] = useState('');
+  const axiosPublic = useAxiosPublic();
 
 
   const handleLogin = (event) => {
@@ -47,12 +49,26 @@ const Login = () => {
 
   const handleGoogleSignIn = () => {
     googleSignIn()
-    .then((result)=>{
-      console.log(result.user);
-      navigate(location?.state ? location.state : "/");
-      // get access token
-
-    })
+    .then(result=>{
+      console.log(result.user)
+      const userInfo ={
+          email: result.user?.email,
+          name: result.user?.displayName,
+          image: result.user?.photoURL
+      }
+      axiosPublic.post('/users', userInfo)
+      .then(res=>{
+          console.log(res.data)
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "User created Succesfully.",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate(location?.state ? location.state : "/");
+      })
+  })
     .catch();
     
   };
