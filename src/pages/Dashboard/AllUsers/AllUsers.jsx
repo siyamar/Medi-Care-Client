@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { FaTrashAlt, FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 
 const AllUsers = () => {
   const axiosPublic = useAxiosPublic();
@@ -71,10 +72,7 @@ const AllUsers = () => {
   };
   return (
     <div>
-      <div className="flex justify-evenly my-4">
-        <h2 className="text-3xl">All Users</h2>
-        <h2 className="text-3xl">Total Users: {users.length}</h2>
-      </div>
+      <SectionTitle heading={'All users'}></SectionTitle>
       <div>
         <div className="overflow-x-auto">
           <table className="table table-zebra w-full">
@@ -105,15 +103,15 @@ const AllUsers = () => {
                       <>
                         <button
                           onClick={() => handleMakeOrganizer(user)}
-                          className="btn bg-orange-500 btn-lg"
+                          className="btn bg-orange-500 text-white btn-sm"
                         >
-                          <FaUsers className="text-white text-2xl"></FaUsers>
+                          Organizer
                         </button>
                         <button
                           onClick={() => handleMakeProfessional(user)}
-                          className="btn bg-orange-500 btn-lg"
+                          className="btn btn-success text-white btn-sm ml-1"
                         >
-                          <FaUsers className="text-white text-2xl"></FaUsers>
+                          Professional
                         </button>
                       </>
                     )}

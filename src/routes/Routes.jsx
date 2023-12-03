@@ -85,6 +85,17 @@ const router = createBrowserRouter([
           path: 'users',
           element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
         },
+         //organizer only routes
+        {
+          path: 'organizerHome',
+          element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
+        },
+         //professional only routes
+        {
+          path: 'professionalHome',
+          element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
+        },
+
       ]
     },
   ]);

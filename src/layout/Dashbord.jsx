@@ -2,6 +2,8 @@ import { FaAd, FaBook, FaCalendar, FaEnvelope, FaHome, FaList, FaSearch, FaShopp
 import { NavLink, Outlet } from "react-router-dom";
 // import useCart from "../hooks/useCart";
 import useAdmin from "../hooks/useAdmin";
+import useOrganizer from "../hooks/useOrganizer";
+import useProfessional from "../hooks/useProfessional";
 // import useAdmin from "../hooks/useAdmin";
 
 const Dashbord = () => {
@@ -9,8 +11,8 @@ const Dashbord = () => {
 
     //TODO: get isAdmin value from the database
     const [isAdmin] = useAdmin();
-    const [isOrganizer] = useAdmin();
-    const [isProfessional] = useAdmin();
+    const [isOrganizer] = useOrganizer();
+    const [isProfessional] = useProfessional();
 
     return (
         <div className="flex">

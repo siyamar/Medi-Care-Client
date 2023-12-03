@@ -68,13 +68,15 @@ const Register = () => {
       axiosPublic.post('/users', userInfo)
       .then(res=>{
           console.log(res.data)
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "User created Succesfully.",
-            showConfirmButton: false,
-            timer: 1500,
-          });
+          if(res.data.insertedId>0){
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "User created Succesfully.",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
           navigate('/')
       })
   })
