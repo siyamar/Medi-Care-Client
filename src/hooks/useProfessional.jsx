@@ -10,7 +10,7 @@ const useProfessional = () => {
      queryFn: async()=>{
          const res = await axiosPublic.get(`/users/professional/${user.email}`)
          console.log(res.data)
-         return res.data?.admin;
+         return res.data?.professional;
      }
     })
     return [isProfessional, isProfessionalLoading]

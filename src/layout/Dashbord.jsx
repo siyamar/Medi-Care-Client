@@ -9,6 +9,9 @@ const Dashbord = () => {
 
     //TODO: get isAdmin value from the database
     const [isAdmin] = useAdmin();
+    const [isOrganizer] = useAdmin();
+    const [isProfessional] = useAdmin();
+
     return (
         <div className="flex">
             {/* dashboard side bar */}
@@ -22,7 +25,21 @@ const Dashbord = () => {
                     <li><NavLink to={'/dashboard/manageItems'}><FaList></FaList>Manage Items</NavLink></li>
                     <li><NavLink to={'/dashboard/bookings'}><FaBook></FaBook>Manage Bookings</NavLink></li>
                     <li><NavLink to={'/dashboard/users'}><FaUsers></FaUsers> All Users</NavLink></li>
-                    </> : 
+                    </> : isOrganizer?
+                    <>
+                    <li><NavLink to={'/dashboard/organizerHome'}><FaHome></FaHome>Organizer Home</NavLink></li>
+                   <li><NavLink to={'/dashboard/addItems'}><FaUtensils></FaUtensils> Add Camps</NavLink></li>
+                   <li><NavLink to={'/dashboard/manageItems'}><FaList></FaList>Manage Items</NavLink></li>
+                   <li><NavLink to={'/dashboard/bookings'}><FaBook></FaBook>Manage Bookings</NavLink></li>
+                   <li><NavLink to={'/dashboard/users'}><FaUsers></FaUsers> All Users</NavLink></li>
+                   </> : isProfessional?
+                    <>
+                    <li><NavLink to={'/dashboard/professionalHome'}><FaHome></FaHome>Healthcare Professional Home</NavLink></li>
+                   <li><NavLink to={'/dashboard/addItems'}><FaUtensils></FaUtensils> Add Camps</NavLink></li>
+                   <li><NavLink to={'/dashboard/manageItems'}><FaList></FaList>Manage Items</NavLink></li>
+                   <li><NavLink to={'/dashboard/bookings'}><FaBook></FaBook>Manage Bookings</NavLink></li>
+                   <li><NavLink to={'/dashboard/users'}><FaUsers></FaUsers> All Users</NavLink></li>
+                   </> :
                     <>
                     <li><NavLink to={'/dashboard/userHome'}><FaHome></FaHome>User Home</NavLink></li>
                     <li><NavLink to={'/dashboard/reservation'}><FaCalendar></FaCalendar>Reservation</NavLink></li>
