@@ -13,15 +13,15 @@ const AllUsers = () => {
     },
   });
 
-  const handleMakeSupper = (user) => {
-    axiosPublic.patch(`/users/supper/${user._id}`).then((res) => {
+  const handleMakeOrganizer = (user) => {
+    axiosPublic.patch(`/users/organizer/${user._id}`).then((res) => {
       console.log(res.data);
       if (res.data.modifiedCount > 0) {
         refetch();
         Swal.fire({
           position: "top-end",
           icon: "success",
-          title: `${user.name} is an supper now!`,
+          title: `${user.name} is an Organizer now!`,
           showConfirmButton: false,
           timer: 1500,
         });
@@ -95,8 +95,8 @@ const AllUsers = () => {
                   <td>{user.name}</td>
                   <td>{user.email}</td>
                   <td>
-                    {user.role === "supper" ? (
-                      "Supper"
+                    {user.role === "organizer" ? (
+                      "Organizer"
                     ) : user.role === "professional" ? (
                       "Healthcare Professional"
                     ) : user.role === "admin" ? (
@@ -104,7 +104,7 @@ const AllUsers = () => {
                     ) : (
                       <>
                         <button
-                          onClick={() => handleMakeSupper(user)}
+                          onClick={() => handleMakeOrganizer(user)}
                           className="btn bg-orange-500 btn-lg"
                         >
                           <FaUsers className="text-white text-2xl"></FaUsers>
