@@ -14,6 +14,9 @@ import UserHome from "../pages/Dashboard/UserHome/UserHome";
 import AdminRoute from "./AdminRoute";
 import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
+import OrganizerRoute from "./OrganizerRoute";
+import ProfessionalRoute from "./ProfessionalRoute";
+import OrganizerHome from "../pages/Dashboard/Organizer/OrganizerHome/OrganizerHome";
 
 const router = createBrowserRouter([
     {
@@ -88,12 +91,14 @@ const router = createBrowserRouter([
          //organizer only routes
         {
           path: 'organizerHome',
-          element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
+          element: <OrganizerRoute><OrganizerHome></OrganizerHome></OrganizerRoute>,
+          loader: ()=> fetch('http://localhost:5000/users')
         },
          //professional only routes
         {
           path: 'professionalHome',
-          element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
+          element: <ProfessionalRoute></ProfessionalRoute>,
+          loader: ()=> fetch('http://localhost:5000/users')
         },
 
       ]

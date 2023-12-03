@@ -39,59 +39,33 @@ const Navbar = () => {
           </li>}
           */}
           {
-            user && <>
+            user && 
             <li>
             <Link to={"/availableCamps"}>Available Camps</Link>
           </li>
+          }
           {
-        user && isAdmin &&
+        user && isAdmin ?
         <li>
         <Link to={"/dashboard/adminHome"}>Dashboard</Link>
-      </li>}
-          {
-        user && isOrganizer &&
+      </li> : user && isOrganizer ?
         <li>
         <Link to={"/dashboard/organizerHome"}>Dashboard</Link>
-      </li>}
-          {
-        user && isProfessional &&
+      </li> : user && isProfessional ?
         <li>
         <Link to={"/dashboard/professionalHome"}>Dashboard</Link>
-      </li>}
-      {
-        user &&
+      </li> : user &&
         <li>
         <Link to={"/dashboard/userHome"}>Dashboard</Link>
       </li>}
-          </>
-          } 
+        
+          
           <li>
             <Link to={"/contactUs"}>Contact Us</Link>
           </li>
           {!user&& <li>
             <Link to={"register"}>Register</Link>
           </li>}
-          {/* <li>
-            <Link to={"/dashboard/cart"}>
-              <button className="btn">
-                <FaShoppingCart className="mr-2"></FaShoppingCart>
-                <div className="badge badge-secondary">+{cart.length}</div>
-              </button>
-            </Link>
-          </li> */}
-          {/* {user ? (
-            <>
-              <button onClick={handleLogout} className="btn btn-ghost">
-                Logout
-              </button>
-            </>
-          ) : (
-            <>
-              <li>
-                <Link to={"login"}>Login</Link>
-              </li>
-            </>
-          )} */}
         </>
       );
     return (
