@@ -18,6 +18,7 @@ import OrganizerRoute from "./OrganizerRoute";
 import ProfessionalRoute from "./ProfessionalRoute";
 import OrganizerHome from "../pages/Dashboard/Organizer/OrganizerHome/OrganizerHome";
 import AddACamp from "../pages/Dashboard/Organizer/AddCamp/AddCamp";
+import ManageCamps from "../pages/Dashboard/Organizer/ManageCamps/ManageCamps";
 
 const router = createBrowserRouter([
     {
@@ -101,7 +102,7 @@ const router = createBrowserRouter([
         },
         {
             path: 'manage-camps',
-            element: <OrganizerRoute></OrganizerRoute>
+            element: <OrganizerRoute><ManageCamps></ManageCamps></OrganizerRoute>
         },
          //professional only routes
         {

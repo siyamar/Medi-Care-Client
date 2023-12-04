@@ -34,7 +34,7 @@ const AddACamp = () => {
         targetAudience: data.targetAudience,
         description: data.description,
         image: res.data.data.display_url,
-        organizerEmail: user.email
+        email: user.email
       };
       //
       const addACamp = await axiosPublic.post("/medicalCamps", addCamp);
