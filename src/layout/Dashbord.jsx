@@ -30,8 +30,8 @@ const Dashbord = () => {
                     </> : isOrganizer?
                     <>
                     <li><NavLink to={'/dashboard/organizerHome'}><FaHome></FaHome>Organizer Home</NavLink></li>
-                   <li><NavLink to={'/dashboard/addItems'}><FaUtensils></FaUtensils> Add Camps</NavLink></li>
-                   <li><NavLink to={'/dashboard/manageItems'}><FaList></FaList>Manage Items</NavLink></li>
+                   <li><NavLink to={'/dashboard/add-a-camp'}><FaUtensils></FaUtensils> Add Camp</NavLink></li>
+                   <li><NavLink to={'/dashboard/manage-camps'}><FaList></FaList>Manage Camps</NavLink></li>
                    <li><NavLink to={'/dashboard/bookings'}><FaBook></FaBook>Manage Bookings</NavLink></li>
                    <li><NavLink to={'/dashboard/users'}><FaUsers></FaUsers> All Users</NavLink></li>
                    </> : isProfessional?

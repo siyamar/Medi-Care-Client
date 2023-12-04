@@ -28,6 +28,7 @@ const OrganizerHome = () => {
     const update = await axiosPublic.patch(`/users/${currentUser._id}`, updateUser);
       console.log(update.data);
     if (update.data.modifiedCount) {
+        
       //show success popup
       Swal.fire({
         position: "top-end",

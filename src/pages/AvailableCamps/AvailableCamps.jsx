@@ -9,9 +9,9 @@ const AvailableCamps = () => {
 
     const filteredCamps = camps
     .filter((camp) =>
-    camp.campName.toLowerCase().includes(searchText.toLowerCase())||
-    camp.scheduledDateTime.toLowerCase().includes(searchText.toLowerCase())||
-    camp.venueLocation.toLowerCase().includes(searchText.toLowerCase())
+    camp.campName?.toLowerCase().includes(searchText?.toLowerCase())||
+    camp.scheduledDateTime?.toLowerCase().includes(searchText?.toLowerCase())||
+    camp.venueLocation?.toLowerCase().includes(searchText?.toLowerCase())
     )
     .sort((a, b) => {
         switch (sorted) {

@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAwIyfNxJUaMt7hsuE_2BQXSs3JMKriPts",
-  authDomain: "medi-connect-92ee2.firebaseapp.com",
-  projectId: "medi-connect-92ee2",
-  storageBucket: "medi-connect-92ee2.appspot.com",
-  messagingSenderId: "81311886528",
-  appId: "1:81311886528:web:b251f4810a4a8442dd9125"
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId
 };
 
 // Initialize Firebase

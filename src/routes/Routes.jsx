@@ -17,6 +17,7 @@ import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 import OrganizerRoute from "./OrganizerRoute";
 import ProfessionalRoute from "./ProfessionalRoute";
 import OrganizerHome from "../pages/Dashboard/Organizer/OrganizerHome/OrganizerHome";
+import AddACamp from "../pages/Dashboard/Organizer/AddCamp/AddCamp";
 
 const router = createBrowserRouter([
     {
@@ -93,6 +94,14 @@ const router = createBrowserRouter([
           path: 'organizerHome',
           element: <OrganizerRoute><OrganizerHome></OrganizerHome></OrganizerRoute>,
           loader: ()=> fetch('http://localhost:5000/users')
+        },
+        {
+            path: 'add-a-camp',
+            element: <OrganizerRoute><AddACamp></AddACamp></OrganizerRoute>
+        },
+        {
+            path: 'manage-camps',
+            element: <OrganizerRoute></OrganizerRoute>
         },
          //professional only routes
         {
