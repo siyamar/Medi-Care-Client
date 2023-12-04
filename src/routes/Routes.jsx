@@ -33,7 +33,7 @@ const router = createBrowserRouter([
         {
             path: 'availableCamps',
             element: <AvailableCamps></AvailableCamps>,
-            loader: ()=> fetch('http://localhost:5000/medicalCamps')
+            loader: ()=> fetch('https://ass-12-medi-connect-server.vercel.app/medicalCamps')
         },
         {
             path: 'contactUs',
@@ -50,7 +50,7 @@ const router = createBrowserRouter([
         {
           path: "camp-details/:id",
           element: <CampDetails></CampDetails>,
-          loader: ({ params }) => fetch(`http://localhost:5000/medicalCamps/${params.id}`),
+          loader: ({ params }) => fetch(`https://ass-12-medi-connect-server.vercel.app/medicalCamps/${params.id}`),
         },
       ]
     },
@@ -62,7 +62,7 @@ const router = createBrowserRouter([
         {
           path: 'userHome',
           element: <UserHome></UserHome>,
-          loader: ()=> fetch('http://localhost:5000/users')
+          loader: ()=> fetch('https://ass-12-medi-connect-server.vercel.app/users')
         },
         // {
         //   path: 'cart',
@@ -94,7 +94,7 @@ const router = createBrowserRouter([
         {
           path: 'organizerHome',
           element: <OrganizerRoute><OrganizerHome></OrganizerHome></OrganizerRoute>,
-          loader: ()=> fetch('http://localhost:5000/users')
+          loader: ()=> fetch('https://ass-12-medi-connect-server.vercel.app/users')
         },
         {
             path: 'add-a-camp',
@@ -108,7 +108,7 @@ const router = createBrowserRouter([
         {
           path: 'professionalHome',
           element: <ProfessionalRoute></ProfessionalRoute>,
-          loader: ()=> fetch('http://localhost:5000/users')
+          loader: ()=> fetch('https://ass-12-medi-connect-server.vercel.app/users')
         },
 
       ]

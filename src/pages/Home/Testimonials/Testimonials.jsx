@@ -16,7 +16,7 @@ const Testimonials = () => {
 
 
   useEffect(() => {
-    fetch("http://localhost:5000/reviews")
+    fetch("https://ass-12-medi-connect-server.vercel.app/reviews")
       .then((res) => res.json())
       .then((data) => {
         setreviews(data);
